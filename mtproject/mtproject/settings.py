@@ -61,12 +61,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+]
+
 ROOT_URLCONF = 'mtproject.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,3 +150,7 @@ TENANT_MODEL = "app.Clients"
 TENANT_DOMAIN_MODEL = "app.Domain"
 
 PUBLIC_SCHEMA_URLCONF = "app.urls"
+
+LOGIN_REDIRECT_URL = '/'  
+LOGOUT_REDIRECT_URL = '/'  
+LOGIN_URL = '/accounts/login/' 
