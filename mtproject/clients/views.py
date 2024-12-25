@@ -26,7 +26,7 @@ def index(request):
 
 
 
-@login_required
+@login_required  #implement authentication
 def create_product(request):
     if request.method != "POST":
         return HttpResponse("Method not allowed", status=405)
@@ -40,6 +40,7 @@ def create_product(request):
         return HttpResponse("Invalid product name", status=400)
 
 
+#Create DRF API endpoints
 class ProductsViewSet(viewsets.ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
