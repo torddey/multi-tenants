@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ request.tenant }} products</title>
+</head>
+<body>
+    <h1>{{ request.tenant }} products</h1>
+    </ul>
+        {% for product in Products %}
+        <li>{{ product.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" action="/create_product">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Add product" />
+        <button>Submit</button>
+    </form>
+
+
+</body>
+</html>
